@@ -12,7 +12,7 @@ apt install php-{mysql,mbstring,curl,gd,xml,intl,ldap,apcu,xmlrpc,zip,bz2,imap} 
 
 #Configuration du service de base de données
 #Définition des mots de passe en variable
-mdp_db="MdP-mDp-MdP" 
+mdp_db="MoTdEpAsSeAcHaNgEr" 
 
 #Préremplissage données mysql_secure_installation (<< indique un here-document qui indique le début d'un bloc de texte combiner avec un marqueur 'ZZZ' ((peut etre autre chose ex:EOF mais ne dois pas être dans le bloc texte pour éviter les erreur de lecture du script)),ZZZ termine le bloc)
 debconf-set-selections <<ZZZ 
@@ -28,7 +28,7 @@ mysql -u root -p$mdp_db <<ZZZ
 #Nom de la base de données
 CREATE DATABASE db_glpi;
 #Création d'un utilisateur + MDP de la BdD avec attribution des droits
-GRANT ALL PRIVILEGES ON db_glpi.* TO admindb_glpi@localhost IDENTIFIED BY "MdPmDpMdP";
+GRANT ALL PRIVILEGES ON db_glpi.* TO admindb_glpi@localhost IDENTIFIED BY "MoTdEpAsSeAcHaNgEr"
 #Actualise les privilèges immédiatement
 FLUSH PRIVILEGES;
 EXIT
@@ -83,9 +83,9 @@ define('GLPI_LOG_DIR', '/var/log/glpi');
 ZZZ
 
 #Configuration d'Apache2
-cat << 'ZZZ' > /etc/apache2/sites-available/glpi.aai.fr.conf
+cat << 'ZZZ' > /etc/apache2/sites-available/glpi.test.fr.conf
 <VirtualHost *:80>
-    ServerName glpi.aai.fr
+    ServerName glpi.test.fr
     DocumentRoot /var/www/glpi/public       
     <Directory /var/www/glpi/public>
         Require all granted
