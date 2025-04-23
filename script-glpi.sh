@@ -9,7 +9,7 @@ apt install apache2 php mariadb-server -y
 
 #Installer les dépendances nécessaires
 apt install php-{mysql,mbstring,curl,gd,xml,intl,ldap,apcu,xmlrpc,zip,bz2,imap} -y
-
+apt install php8.2-fpm -y
 #Configuration du service de base de données
 #Définition des mots de passe en variable
 mdp_db="MoTdEpAsSeAcHaNgEr" 
@@ -28,7 +28,7 @@ mysql -u root -p$mdp_db <<ZZZ
 #Nom de la base de données
 CREATE DATABASE db_glpi;
 #Création d'un utilisateur + MDP de la BdD avec attribution des droits
-GRANT ALL PRIVILEGES ON db_glpi.* TO admindb_glpi@localhost IDENTIFIED BY "MoTdEpAsSeAcHaNgEr"
+GRANT ALL PRIVILEGES ON db_glpi.* TO admindb_glpi@localhost IDENTIFIED BY "MoTdEpAsSeAcHaNgEr";
 #Actualise les privilèges immédiatement
 FLUSH PRIVILEGES;
 EXIT
@@ -100,7 +100,7 @@ cat << 'ZZZ' > /etc/apache2/sites-available/glpi.test.fr.conf
 ZZZ
 
 #Activation du site web (a2=apache2 / en=enable / site=site)
-a2ensite glpi.aai.fr.conf
+a2ensite glpi.test.fr.conf
 
 #Désactivation du site web par defaut d apache2 (dis=disable)
 a2dissite 000-default.conf
