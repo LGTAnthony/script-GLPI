@@ -36,7 +36,7 @@ ZZZ
 
 #Téléchargement de GLPI dans dossier temporaire /tmp
 cd /tmp
-wget https://github.com/glpi-project/glpi/releases/download/10.0.17/glpi-10.0.17.tgz
+wget https://github.com/glpi-project/glpi/releases/download/10.0.18/glpi-10.0.18.tgz
 
 #Extraction de GLPI avec tar dans le repertoire par défaut de la page web
 #-x pour extraction
@@ -44,7 +44,7 @@ wget https://github.com/glpi-project/glpi/releases/download/10.0.17/glpi-10.0.17
 #-z pour indiquer que le fichier est en gzip
 #-f nom du fichier pour spécifier le fichier à extraire
 #-C .....html pour indiquer le repertoire cible où extraire le fichier 
-tar -xvzf glpi-10.0.17.tgz -C /var/www/
+tar -xvzf glpi-10.0.18.tgz -C /var/www/
 
 #Configuration des permissions
 #chown change le propriétaire des fichiers
