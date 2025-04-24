@@ -131,7 +131,7 @@ a2dissite 000-default.conf
 a2enmod rewrite
 
 #Activation ssl
-a2enmode ssl
+a2enmod ssl
 
 #Redémarrage d Apache2 pour mise à jour
 systemctl restart apache2
@@ -150,7 +150,7 @@ systemctl reload apache2
 
 #Configuration PHP (sed est un outil pour filtrer et transformer du texte -i oblige à ne traiter que le fichier indiqué sauf si une extension pour la sauvegarde est fourni)
 sed -i 's/^session.cookie_httponly =/session.cookie_httponly = on/' /etc/php/8.2/fpm/php.ini
-sed -i 's/^; session.cookie_secure =/session.cookie_secure = on/' /etc/php/8.2/fpm/php.ini
+sed -i 's/^;session.cookie_secure =/session.cookie_secure = on/' /etc/php/8.2/fpm/php.ini
 
 #Redémarrage de php8.2-fpm et Apache2 pour mise à jour
 systemctl restart php8.2-fpm.service apache2
