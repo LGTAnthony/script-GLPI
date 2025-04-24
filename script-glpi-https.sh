@@ -65,6 +65,7 @@ chown -R www-data /var/lib/glpi/
 mv /var/www/glpi/files /var/lib/glpi
 mkdir /var/log/glpi
 chown www-data /var/log/glpi
+mkdir /etc/ssl/certglpi
 
 # Redémarrage des services pour appliquer les changements
 systemctl restart apache2
@@ -86,7 +87,7 @@ define('GLPI_LOG_DIR', '/var/log/glpi');
 ZZZ
 
 #Création d'un certificat autosigné
-openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/glpi/domain.key -out /etc/ssl/glpi/domain.crt -days 365 -nodes -subj "/C=FR/ST=FRANCE/L=MDM/O=FREE/OU=TSSR/CN=CERTGLPI"
+openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/certglpi/domain.key -out /etc/ssl/certglpi/domain.crt -days 365 -nodes -subj "/C=FR/ST=FRANCE/L=MDM/O=FREE/OU=TSSR/CN=HTTPSGLPI"
 
 #Configuration d'Apache2
 cat << 'ZZZ' > /etc/apache2/sites-available/glpi.test.fr.conf
